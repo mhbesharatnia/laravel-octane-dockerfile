@@ -194,6 +194,18 @@ RUN if [ ${INSTALL_RDKAFKA} = true ]; then \
   fi
 
 ###########################################
+# SoapClient
+###########################################
+
+ARG INSTALL_SOAP=false
+
+RUN if [ ${INSTALL_SOAP} = true ]; then \
+      apt-get install -yqq --no-install-recommends --show-progress \
+      libxml2-dev \
+      && docker-php-ext-install soap; \
+  fi
+  
+###########################################
 # OpenSwoole/Swoole extension
 ###########################################
 
